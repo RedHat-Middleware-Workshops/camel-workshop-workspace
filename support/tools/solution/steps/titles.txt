@@ -1,0 +1,18 @@
+0 Define the 'm2r' flow: Matrix to RocketChat
+1 Deploy 'm2r' on OpenShift
+2 Define a filter to prevent death loops
+3 Define the 'r2m' flow: RocketChat to Matrix
+4 Deploy 'r2m' on OpenShift
+5 Decoupled Architecture
+6 Deploy event-driven integrations on OpenShift
+7 Sink Kamelet for Discord (base skeleton)
+8 Sink Kamelet for Discord (steps definition)
+9 Sink Kamelet for Discord (completed)
+10 Define the 'k2d' flow: Kafka to Discord
+11 Test the 'k2d' flow: Kafka to Discord
+12 Define the Discord consumer
+13 Test the Discord cosumer
+14 Define the 'd2k' flow: Discord to Kafka
+15 Test the 'd2k' flow: Discord to Kafka
+16 Create a Cron Job
+17 Add storage

@@ -1,0 +1,60 @@
+#! /bin/bash
+# set -x
+
+# BASE=/projects/message-hub
+BASE=$PROJECT_SOURCE
+LAB=$BASE/lab
+TOOLS=$BASE/support/tools
+FF=$TOOLS/solution/steps
+
+# Return chapter details when no argument is passed (no chapter requested)
+if [ ! "$1" ]; then
+  echo "You need to provide the dir to run."
+  exit
+fi
+
+# to ensure all hidden files & dirs are deleted (.camel) we need to change directory and return
+if [ ! -d "$LAB/$1" ]; then
+  echo "The dir needs to exit in your 'lab' directory."
+  exit
+fi
+
+# Deploy with Kubernetes plugin
+# cd $LAB/$1
+# camel kubernetes run * \
+# --name="$1" \
+# --local-kamelet-dir="$BASE"/support/deploy/kamelets \
+# --cluster-type=openshift \
+# ${@:2}
+
+
+# 1. Initialize arrays to sort arguments
+property_files=()
+
+# 2. Loop through all arguments passed to the script
+for arg in "$@"; do
+    case "$arg" in
+        # If the argument ends in .properties, add it to the properties array
+        *.properties)
+            property_files+=("$arg")
+            ;;
+    esac
+done
+
+# 3. Initialize the flag variable
+property_flag=""
+
+# 4. Check if the property_files array is not empty
+if [ ${#property_files[@]} -gt 0 ]; then
+    # 5. Join all property files with a comma
+    joined_files=$(IFS=,; echo "${property_files[*]}")
+fi
+
+# echo --property quarkus.config.locations=$joined_files
+
+camel kubernetes run $1/* \
+--name=$1 \
+--local-kamelet-dir=$BASE/support/deploy/kamelets \
+--cluster-type=openshift \
+--property quarkus.config.locations=$joined_files \
+${@:2}
