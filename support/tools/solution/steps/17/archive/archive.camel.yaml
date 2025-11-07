@@ -1,14 +1,10 @@
 - route:
-    id: main-processor
+    id: main
     from:
       uri: kafka
       parameters:
         topic: "{{kafka.topic}}"
         brokers: my-cluster-kafka-bootstrap:9092
-      # uri: kafka:roomx?{{camel.uri.kafka.parameters}}
-      # uri: direct
-      # parameters:
-      #   name: main-processor
       steps:
         - bean:
             method: newMessage
@@ -35,7 +31,7 @@
               - to:
                   uri: direct
                   parameters:
-                    name: store-data
+                    name: archive-data
             aggregationStrategy: "msgStrategy"
             completionTimeout: "{{message.aggregator.timeout}}"
             correlationExpression:
@@ -56,36 +52,26 @@
         - log:
             message: Aggregation has completed.
 - route:
-    id: store-data
+    id: archive-data
     from:
       uri: direct
       parameters:
-        name: store-data
+        name: archive-data
       steps:
         - log:
-            message: "ready to store aggregated data:\\n${body}"
+            message: "ready to archive aggregated data:\\n${body}"
         - log:
-            message: storage done.
+            message: archiving done.
 
-
-
-# - route:
-#     id: timer-mock-1
-#     from:
-#       uri: timer
-#       parameters:
-#         timerName: mock-1
-#         repeatCount: 5
-#         period: 1000
-#         includeMetadata: true
-#       steps:
-#         - setBody:
-#             expression:
-#               simple:
-#                 expression: "{{producer.mock.body}}"
-#         - to:
-#             uri: kafka:roomx?{{camel.uri.kafka.parameters}}
-
-            # uri: direct
-            # parameters:
-            #   name: main-processor
+        - setHeader:
+            name: CamelAwsS3Key
+            simple:
+              expression: myroom/${date:now:yyyy-MM-dd_HH-mm-ssZ}.csv
+        - setHeader:
+            name: CamelAwsS3ContentType
+            constant:
+              expression: text/csv
+        - to:
+            uri: aws2-s3
+            parameters:
+              bucketNameOrArn: chatrooms-user3
