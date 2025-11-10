@@ -4,7 +4,7 @@
 PATH_PROJECT=$PROJECT_SOURCE/message-hub
 CATALOG=https://raw.githubusercontent.com/KaotoIO/catalogs/4.8.0/catalogs/index.json
 CWCONFIG=/projects/.code-workspace
-LAB=$PATH_PROJECT/message-hub/lab
+LAB=$PATH_PROJECT/lab
 
 # Disabled as Kaoto's latest release comes with 4.8.0
 # Configure Kaoto's catalogue version
