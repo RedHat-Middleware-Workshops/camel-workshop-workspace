@@ -7,14 +7,14 @@
 			"matrix": {
 				"type": "JSON Schema",
 				"filePath": [
-					"message-hub/support/schemas/matrix-in.json"
+					"support/schemas/matrix-in.json"
 				]
 			}
 		},
 		"targetBody": {
 			"type": "JSON Schema",
 			"filePath": [
-				"message-hub/support/schemas/rocketchat-out.json"
+				"support/schemas/rocketchat-out.json"
 			]
 		},
 		"xsltPath": "kaoto-datamapper-90a3f4e.xsl"
@@ -27,14 +27,14 @@
 			"rocketchat": {
 				"type": "JSON Schema",
 				"filePath": [
-					"message-hub/support/schemas/rocketchat-in.json"
+					"support/schemas/rocketchat-in.json"
 				]
 			}
 		},
 		"targetBody": {
 			"type": "JSON Schema",
 			"filePath": [
-				"message-hub/support/schemas/matrix-out.json"
+				"support/schemas/matrix-out.json"
 			]
 		},
 		"xsltPath": "kaoto-datamapper-5ca3cd77.xsl"
@@ -47,14 +47,14 @@
 			"matrix": {
 				"type": "JSON Schema",
 				"filePath": [
-					"message-hub/support/schemas/matrix-in.json"
+					"support/schemas/matrix-in.json"
 				]
 			}
 		},
 		"targetBody": {
 			"type": "JSON Schema",
 			"filePath": [
-				"message-hub/support/schemas/common.json"
+				"support/schemas/common.json"
 			]
 		},
 		"xsltPath": "kaoto-datamapper-7a118d28.xsl"
@@ -67,14 +67,14 @@
 			"common": {
 				"type": "JSON Schema",
 				"filePath": [
-					"message-hub/support/schemas/common.json"
+					"support/schemas/common.json"
 				]
 			}
 		},
 		"targetBody": {
 			"type": "JSON Schema",
 			"filePath": [
-				"message-hub/support/schemas/rocketchat-out.json"
+				"support/schemas/rocketchat-out.json"
 			]
 		},
 		"xsltPath": "kaoto-datamapper-a02d6e81.xsl"
@@ -87,14 +87,14 @@
 			"common": {
 				"type": "JSON Schema",
 				"filePath": [
-					"message-hub/support/schemas/common.json"
+					"support/schemas/common.json"
 				]
 			}
 		},
 		"targetBody": {
 			"type": "JSON Schema",
 			"filePath": [
-				"message-hub/support/schemas/matrix-out.json"
+				"support/schemas/matrix-out.json"
 			]
 		},
 		"xsltPath": "kaoto-datamapper-47762710.xsl"
@@ -107,14 +107,14 @@
 			"rocketchat": {
 				"type": "JSON Schema",
 				"filePath": [
-					"message-hub/support/schemas/rocketchat-in.json"
+					"support/schemas/rocketchat-in.json"
 				]
 			}
 		},
 		"targetBody": {
 			"type": "JSON Schema",
 			"filePath": [
-				"message-hub/support/schemas/common.json"
+				"support/schemas/common.json"
 			]
 		},
 		"xsltPath": "kaoto-datamapper-eacd7d5c.xsl"
@@ -127,14 +127,14 @@
 			"common": {
 				"type": "JSON Schema",
 				"filePath": [
-					"message-hub/support/schemas/common.json"
+					"support/schemas/common.json"
 				]
 			}
 		},
 		"targetBody": {
 			"type": "JSON Schema",
 			"filePath": [
-				"message-hub/support/schemas/discord-out.json"
+				"support/schemas/discord-out.json"
 			]
 		},
 		"xsltPath": "kaoto-datamapper-5e9ba87a.xsl"
@@ -147,14 +147,14 @@
 			"discord": {
 				"type": "JSON Schema",
 				"filePath": [
-					"message-hub/support/schemas/discord-in.json"
+					"support/schemas/discord-in.json"
 				]
 			}
 		},
 		"targetBody": {
 			"type": "JSON Schema",
 			"filePath": [
-				"message-hub/support/schemas/common.json"
+				"support/schemas/common.json"
 			]
 		},
 		"xsltPath": "kaoto-datamapper-72a80f87.xsl"

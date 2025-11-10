@@ -2,7 +2,7 @@
 # set -x
 
 BASE=$PROJECT_SOURCE
-LAB=$BASE/message-hub/lab
+LAB=$BASE/lab
 TOOLS=$BASE/tools
 FF=$TOOLS/solution/steps
 
@@ -35,5 +35,5 @@ fi
 camel run \
 --name $1 \
 --source-dir $LAB/$1 \
---local-kamelet-dir $BASE/message-hub/support/kamelets \
+--local-kamelet-dir $BASE/support/kamelets \
 ${@:2}

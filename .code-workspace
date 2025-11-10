@@ -1,5 +1,22 @@
 {
 	"settings": {
-		"kaoto.colorTheme": "light"
+		"kaoto.colorTheme": "light",
+		"telemetry.feedback.enabled": false,
+		"redhat.telemetry.enabled": false,
+		"security.workspace.trust.enabled": false,
+		"security.extension.trust.enabled": false,
+		"security.workspace.trust.banner": "never",
+
+	    "files.exclude": {
+            ".vscode": true,
+            "support": true,
+            "tools": true,
+            ".code-workspace": true,
+            ".*": true,
+            "README.md": true,
+
+   			"**/.camel-jbang": true,
+   			"**/.camel-jbang-run": true
+	    },
 	}
 }

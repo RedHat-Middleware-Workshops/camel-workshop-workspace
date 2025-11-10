@@ -1,7 +1,7 @@
 #! /bin/bash
 # set -x
 
-PATH_PROJECT=$PROJECT_SOURCE/message-hub
+PATH_PROJECT=$PROJECT_SOURCE
 CATALOG=https://raw.githubusercontent.com/KaotoIO/catalogs/4.8.0/catalogs/index.json
 CWCONFIG=/projects/.code-workspace
 LAB=$PATH_PROJECT/lab
