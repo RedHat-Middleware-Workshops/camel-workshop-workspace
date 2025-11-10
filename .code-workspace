@@ -1,16 +1,5 @@
 {
 	"settings": {
-		"kaoto.colorTheme": "light",
-		"telemetry.feedback.enabled": false,
-		"redhat.telemetry.enabled": false,
-		"security.workspace.trust.enabled": false,
-		"security.extension.trust.enabled": false,
-		"security.workspace.trust.banner": "never",
-
-		"files.exclude": {
-			".vscode": true,
-			"support": true
-		},
-
+		"kaoto.colorTheme": "light"
 	}
 }
