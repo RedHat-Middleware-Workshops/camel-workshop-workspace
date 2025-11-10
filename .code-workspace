@@ -6,19 +6,22 @@
 		"security.workspace.trust.enabled": false,
 		"security.extension.trust.enabled": false,
 		"security.workspace.trust.banner": "never",
-
 		"git.enabled": true,
-	    
-	    "files.exclude": {
-            ".vscode": true,
-            "support": true,
-            "tools": true,
-            ".code-workspace": true,
-            ".*": true,
-            "README.md": true,
-
-   			"**/.camel-jbang": true,
-   			"**/.camel-jbang-run": true
-	    },
-	}
+		"files.exclude": {
+			".vscode": true,
+			"support": true,
+			"tools": true,
+			".code-workspace": true,
+			".*": true,
+			"README.md": true,
+			"**/.camel-jbang": true,
+			"**/.camel-jbang-run": true
+		}
+	},
+	"folders": [
+		{
+			"name": "workshop",
+			"path": "/projects/workshop"
+		}
+	]
 }
