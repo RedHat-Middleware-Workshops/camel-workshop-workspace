@@ -5,9 +5,15 @@
 		"redhat.telemetry.enabled": false,
 		"security.workspace.trust.enabled": false,
 		"security.extension.trust.enabled": false,
-		"security.workspace.trust.banner": "never"
+		"security.workspace.trust.banner": "never",
+
+		"files.exclude": {
+			".vscode": true,
+			"support": true
+		},
+
 	},
-	"folders": [
+	"ignore.folders": [
 		{
 			"name": "message-hub",
 			"path": "/projects/message-hub/message-hub"
