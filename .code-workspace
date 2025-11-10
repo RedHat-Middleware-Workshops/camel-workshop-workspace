@@ -1,6 +1,7 @@
 {
 	"settings": {
 		"kaoto.colorTheme": "light"
+		"telemetry.feedback.enabled": false
 		"redhat.telemetry.enabled": false
 	}
 }
