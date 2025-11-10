@@ -9,8 +9,8 @@
 	},
 	"folders": [
 		{
-			"name": "lab",
-			"path": "/projects/lab/lab"
+			"name": "message-hub",
+			"path": "/projects/message-hub/message-hub"
 		}
 	]
 }

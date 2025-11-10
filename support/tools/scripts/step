@@ -1,7 +1,6 @@
 #! /bin/bash
 # set -x
 
-# BASE=/projects/message-hub
 BASE=$PROJECT_SOURCE
 LAB=$BASE/lab
 CONFIG=$BASE/support/config

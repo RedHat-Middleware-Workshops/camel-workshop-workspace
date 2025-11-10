@@ -1,10 +1,6 @@
 #! /bin/bash
 # set -x
 
-# DEFINE SCRIPT PROJECT NAME
-# PROJECT=message-hub
-
-# PATH_PROJECT=/projects/$PROJECT
 PATH_PROJECT=$PROJECT_SOURCE
 CATALOG=https://raw.githubusercontent.com/KaotoIO/catalogs/4.8.0/catalogs/index.json
 CWCONFIG=/projects/.code-workspace
