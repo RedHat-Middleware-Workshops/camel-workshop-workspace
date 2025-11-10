@@ -6,5 +6,11 @@
 		"security.workspace.trust.enabled": false,
 		"security.extension.trust.enabled": false,
 		"security.workspace.trust.banner": "never"
-	}
+	},
+	"folders": [
+		{
+			"name": "message-hub",
+			"path": "/projects/message-hub/lab"
+		}
+	]
 }
