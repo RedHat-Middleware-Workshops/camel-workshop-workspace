@@ -18,19 +18,6 @@ if [ ! -d "$LAB/$1" ]; then
   exit
 fi
 
-# if [ "$2" == "--dev" ]; then
-#   # Run Camel JBang
-#   camel run \
-#   --dev \
-#   --source-dir $LAB/$1 \
-#   --local-kamelet-dir $BASE/support/deploy/kamelets
-# else
-#   # Run Camel JBang
-#   camel run \
-#   --source-dir $LAB/$1 \
-#   --local-kamelet-dir $BASE/support/deploy/kamelets
-# fi
-
 # Run Camel JBang
 camel run \
 --name $1 \

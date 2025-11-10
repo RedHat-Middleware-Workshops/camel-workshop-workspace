@@ -18,14 +18,6 @@ if [ ! -d "$LAB/$1" ]; then
   exit
 fi
 
-# Deploy with Kubernetes plugin
-# cd $LAB/$1
-# camel kubernetes run * \
-# --name="$1" \
-# --local-kamelet-dir="$BASE"/support/deploy/kamelets \
-# --cluster-type=openshift \
-# ${@:2}
-
 
 # 1. Initialize arrays to sort arguments
 property_files=()
