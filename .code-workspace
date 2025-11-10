@@ -1,7 +1,10 @@
 {
 	"settings": {
-		"kaoto.colorTheme": "light"
-		"telemetry.feedback.enabled": false
-		"redhat.telemetry.enabled": false
+		"kaoto.colorTheme": "light",
+		"telemetry.feedback.enabled": false,
+		"redhat.telemetry.enabled": false,
+		"security.workspace.trust.enabled": false,
+		"security.extension.trust.enabled": false,
+		"security.workspace.trust.banner": "never"
 	}
 }
