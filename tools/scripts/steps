@@ -3,8 +3,7 @@
 
 BASE=$PROJECT_SOURCE
 LAB=$BASE/message-hub/lab
-CONFIG=$BASE/support/config
-TOOLS=$BASE/support/tools
+TOOLS=$BASE/tools
 FF=$TOOLS/solution/steps
 
 while IFS= read -r line || [[ -n "$line" ]]; do

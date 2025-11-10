@@ -2,7 +2,7 @@
 # set -x
 
 BASE=$PROJECT_SOURCE
-CURRENT=`head $BASE/support/tools/scripts/current`
+CURRENT=`head $BASE/tools/scripts/current`
 
 # echo "rewind..."
 echo -e "\033[33mrewind...\033[0m"

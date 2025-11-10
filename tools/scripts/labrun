@@ -3,7 +3,7 @@
 
 BASE=$PROJECT_SOURCE
 LAB=$BASE/message-hub/lab
-TOOLS=$BASE/support/tools
+TOOLS=$BASE/tools
 FF=$TOOLS/solution/steps
 
 # Return chapter details when no argument is passed (no chapter requested)
@@ -35,5 +35,5 @@ fi
 camel run \
 --name $1 \
 --source-dir $LAB/$1 \
---local-kamelet-dir $BASE/support/deploy/kamelets \
+--local-kamelet-dir $BASE/message-hub/support/kamelets \
 ${@:2}

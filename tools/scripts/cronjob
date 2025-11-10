@@ -3,7 +3,7 @@
 
 BASE=$PROJECT_SOURCE
 LAB=$BASE/message-hub/lab
-TOOLS=$BASE/support/tools
+TOOLS=$BASE/tools
 FF=$TOOLS/solution/steps
 
 # Return chapter details when no argument is passed (no chapter requested)
@@ -20,4 +20,19 @@ fi
 
 # Deploy with Kubernetes plugin
 cd $LAB/$1
-camel kubernetes delete --name $1
+
+rm -rf cronjob
+
+camel kubernetes export * \
+--name="$1" \
+--local-kamelet-dir="$BASE"/message-hub/support/kamelets \
+--cluster-type=openshift \
+--dep io.quarkus:quarkus-openshift \
+--dir cronjob \
+--java-version=17 \
+${@:2}
+
+cd cronjob
+
+./mvnw clean package -DskipTests -Dquarkus.kubernetes.deploy=true
+
