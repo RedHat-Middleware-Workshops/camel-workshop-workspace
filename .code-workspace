@@ -14,6 +14,7 @@
 			".code-workspace": true,
 			".*": true,
 			"README.md": true,
+			"**/.gitignore": true,
 			"**/.camel-jbang": true,
 			"**/.camel-jbang-run": true
 		}

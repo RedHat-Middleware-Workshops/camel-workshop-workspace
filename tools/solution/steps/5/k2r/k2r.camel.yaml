@@ -1,20 +1,16 @@
 - route:
-    id: route-3191
     description: Kafka to RocketChat
     from:
       description: "To do: Kafka"
       steps:
         - filter:
-            id: filter-1773
             description: "To do: Filter"
             steps:
-              - stop:
-                  id: stop-2721
+              - stop: {}
             jq:
               expression: ""
-              source: matrix
+              source: common
         - step:
-            id: step-1622
             description: "To do: Mapping"
         - log:
             message: ${body}
@@ -25,5 +21,4 @@
               templateId: rocketchat-sink
               token: "{{rocketchat.token}}"
               userid: "{{rocketchat.userid}}"
-            disabled: false
-      variableReceive: matrix
+      variableReceive: common
