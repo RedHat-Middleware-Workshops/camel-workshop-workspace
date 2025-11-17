@@ -7,7 +7,7 @@
     <xsl:variable name="mapped-xml">
         <map xmlns="http://www.w3.org/2005/xpath-functions">
             <string key="timestamp">
-                <xsl:value-of select="current-dateTime()"/>
+                <xsl:value-of select="format-dateTime(current-dateTime(),'[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01].[f001]Z')"/>
             </string>
             <string key="source">
                 <xsl:value-of select="&quot;discord&quot;"/>

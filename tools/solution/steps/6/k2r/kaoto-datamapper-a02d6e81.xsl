@@ -7,7 +7,7 @@
     <xsl:variable name="mapped-xml">
         <map xmlns="http://www.w3.org/2005/xpath-functions">
             <string key="channel">
-                <xsl:value-of select="replace($common-x/fn:map/fn:string[@key='user'], 'user', 'room')"/>
+                <xsl:value-of select="replace(concat(environment-variable('WORKSPACE_NAMESPACE'),environment-variable('KUBERNETES_NAMESPACE')), '^user(\d+)-devspaces$', 'room$1')"/>
             </string>
             <string key="text">
                 <xsl:value-of select="concat(&quot;*&quot;,$common-x/fn:map/fn:string[@key='user'], &quot;@&quot;, $common-x/fn:map/fn:string[@key='source'],&quot;:* &quot;, $common-x/fn:map/fn:string[@key='text'])"/>
