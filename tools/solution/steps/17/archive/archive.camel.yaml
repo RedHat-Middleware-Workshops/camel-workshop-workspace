@@ -74,4 +74,4 @@
         - to:
             uri: aws2-s3
             parameters:
-              bucketNameOrArn: chatrooms-user3
+              bucketNameOrArn: {{s3.bucket}}
