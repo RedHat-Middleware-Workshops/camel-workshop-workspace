@@ -6,7 +6,7 @@
 		"security.workspace.trust.enabled": false,
 		"security.extension.trust.enabled": false,
 		"security.workspace.trust.banner": "never",
-		"git.enabled": true,
+		"git.enabled": false,
 		"files.exclude": {
 			".vscode": true,
 			"support": true,
