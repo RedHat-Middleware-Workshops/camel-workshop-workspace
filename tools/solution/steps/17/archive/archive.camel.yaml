@@ -74,4 +74,4 @@
         - to:
             uri: aws2-s3
             parameters:
-              bucketNameOrArn: {{s3.bucket}}
+              bucketNameOrArn: "{{s3.bucket}}"
