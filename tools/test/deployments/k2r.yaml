@@ -1,0 +1,102 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: k2r
+  labels:
+    app: k2r
+    app.kubernetes.io/part-of: org.example.project
+    app.kubernetes.io/version: 1.0-SNAPSHOT
+    app.kubernetes.io/runtime: camel
+    provider: jkube
+    app.openshift.io/runtime: camel
+    app.kubernetes.io/managed-by: jkube
+    version: 1.0-SNAPSHOT
+    app.kubernetes.io/name: k2r
+    group: org.example.project
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: k2r
+      app.kubernetes.io/managed-by: jkube
+      app.kubernetes.io/name: k2r
+      app.kubernetes.io/part-of: org.example.project
+      group: org.example.project
+      provider: jkube
+  template:
+    metadata:
+      name: k2r
+      creationTimestamp: null
+      labels:
+        app: k2r
+        app.kubernetes.io/managed-by: jkube
+        app.kubernetes.io/name: k2r
+        app.kubernetes.io/part-of: org.example.project
+        app.kubernetes.io/version: 1.0-SNAPSHOT
+        group: org.example.project
+        provider: jkube
+        version: 1.0-SNAPSHOT
+    spec:
+      containers:
+        - resources: {}
+          readinessProbe:
+            httpGet:
+              path: /observe/health/ready
+              port: 9876
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          name: k2r
+          livenessProbe:
+            httpGet:
+              path: /observe/health/live
+              port: 9876
+              scheme: HTTP
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          env:
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: RC_ROOM
+              value: PENDING
+          securityContext:
+            privileged: false
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          startupProbe:
+            httpGet:
+              path: /observe/health/started
+              port: 9876
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePolicy: File
+          image: PENDING
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 2
+  progressDeadlineSeconds: 600
