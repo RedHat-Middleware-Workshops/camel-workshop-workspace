@@ -28,3 +28,14 @@ done
 
 oc project $NS_TEST
 echo "Switched back to host namespace $NS_TEST"
+
+# Last message to send from hosting namespace (for testing)
+# Obtain POD running RocketChat consumer
+POD=$(oc get pod -l app=r2k -o jsonpath='{.items[0].metadata.name}')
+
+# Simulate message from RocketChat to Webhook
+oc rsh $POD curl localhost:8080/webhook -d '{"text":"test message","timestamp":"dummy"}' -H "content-type: json"
+
+echo "Test message sent to: $NAMESPACE/$POD"
+
+info "Done, all test messages sent."

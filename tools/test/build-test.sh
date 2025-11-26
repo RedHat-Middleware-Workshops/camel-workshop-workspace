@@ -92,3 +92,36 @@ application.properties \
 --cluster-type openshift
 
 info "Flows have been built and deployed in: $NS_TEST"
+
+
+# The following section of the script forces the deployments to be present in all worker nodes.
+# This allows each worker node to gain authenticated access to master test images built in the host test namespace.
+
+# Get all READY worker nodes, sorted alphabetically
+mapfile -t WORKER_NODES < <(oc get nodes -l node-role.kubernetes.io/worker= --no-headers | awk '{print $1}' | sort)
+
+# Test deployments
+DEPLOYMENTS=(
+    "m2k"
+    "r2k"
+    "k2m"
+    "k2r"
+)
+
+# List worker nodes
+echo "Found ${#WORKER_NODES[@]} worker nodes. Assigning round-robin..."
+
+for i in "${!DEPLOYMENTS[@]}"; do
+    DEP="${DEPLOYMENTS[$i]}"
+
+    # Round-robin index: if we have more deployments than nodes → wrap around
+    NODE_INDEX=$(( i % ${#WORKER_NODES[@]} ))
+    NODE="${WORKER_NODES[$NODE_INDEX]}"
+
+    echo "Patching deployment/$DEP → nodeName=$NODE"
+
+    # Pin deployment with nodeName
+    oc patch deployment "$DEP" -p "{\"spec\":{\"template\":{\"spec\":{\"nodeName\":\"$NODE\"}}}}"
+done
+
+info "Done! 4 deployments are now hard-pinned, one node each (with rollover)."

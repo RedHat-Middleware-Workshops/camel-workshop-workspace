@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Range of User IDs where the apps will be deployed 
-FIRST=6
-LAST=9
+FIRST=1
+LAST=19
 
 # Extract the number right after "user" and before "-"
 NUMBER=$(echo "$DEVWORKSPACE_NAMESPACE" | sed -n 's/^user\([0-9]\+\)-.*/\1/p')
