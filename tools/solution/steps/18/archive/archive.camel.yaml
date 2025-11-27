@@ -63,3 +63,15 @@
         - log:
             message: archiving done.
 
+        - setHeader:
+            name: CamelAwsS3Key
+            simple:
+              expression: myroom/${date:now:yyyy-MM-dd_HH-mm-ss}.csv
+        - setHeader:
+            name: CamelAwsS3ContentType
+            constant:
+              expression: text/csv
+        - to:
+            uri: aws2-s3
+            parameters:
+              bucketNameOrArn: "{{s3.bucket}}"

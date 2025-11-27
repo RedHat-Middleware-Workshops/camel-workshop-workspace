@@ -6,6 +6,7 @@
 		"security.workspace.trust.enabled": false,
 		"security.extension.trust.enabled": false,
 		"security.workspace.trust.banner": "never",
+		"terminal.integrated.ignoreBracketedPasteMode": true,
 		"git.enabled": false,
 		"files.exclude": {
 			".vscode": true,
