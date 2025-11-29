@@ -1,26 +1,13 @@
 #!/bin/bash
 
-# Range of User IDs where the apps will be deployed 
-FIRST=1
-LAST=19
-
-# Extract the number right after "user" and before "-"
-NUMBER=$(echo "$DEVWORKSPACE_NAMESPACE" | sed -n 's/^user\([0-9]\+\)-.*/\1/p')
-
-# This will be the room in RC and Matrix used for testing
-TEST_ROOM="room$NUMBER"
-
-# This is the test user designated to host the testing
-TEST_USER=user$NUMBER
-
-# This is the namespace chosen has host for testing
-NS_TEST="user$NUMBER-devspaces"
-
-
 # Pretty error function
 die() {
   printf '\n\033[0;31mERROR:\033[0m %s\n\n' "$*" >&2
   exit 1
+}
+
+warn() {
+  printf '\n\033[0;31mWARNING:\033[0m %s\n\n' "$*" >&2
 }
 
 info() {
@@ -39,3 +26,22 @@ if ! oc auth can-i '*' '*' --all-namespaces >/dev/null 2>&1; then
 fi
 
 info "You are cluster-admin – continuing!"
+
+# Extract the total number of users in the cluster
+NUMBER=$(oc get secret htpasswd -n openshift-config -o jsonpath='{.data.htpasswd}' | base64 -d | grep user | wc -l)
+
+# Range of User IDs where the apps will be deployed 
+FIRST=1
+LAST=$(( NUMBER - 1 ))
+
+# FIRST=59
+# LAST=59
+
+# This will be the room in RC and Matrix used for testing
+TEST_ROOM="room$NUMBER"
+
+# This is the test user designated to host the testing
+TEST_USER=user$NUMBER
+
+# This is the namespace chosen has host for testing
+NS_TEST="user$NUMBER-devspaces"
