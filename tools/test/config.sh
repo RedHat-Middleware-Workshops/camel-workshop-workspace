@@ -34,9 +34,6 @@ NUMBER=$(oc get secret htpasswd -n openshift-config -o jsonpath='{.data.htpasswd
 FIRST=1
 LAST=$(( NUMBER - 1 ))
 
-# FIRST=59
-# LAST=59
-
 # This will be the room in RC and Matrix used for testing
 TEST_ROOM="room$NUMBER"
 
