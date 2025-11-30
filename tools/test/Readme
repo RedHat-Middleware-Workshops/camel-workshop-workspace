@@ -58,3 +58,13 @@ Deletes all deployments from all user namespaces (except the host namespace for 
 [clean-test.sh]
 ===============
 Uses Camel JBang to clean the 4 flows deployed in the host test namespaces. This ensures all the the artifacts are properly deleted: route,service,pod,deployment, etc.
+
+[ws-fix-failed.sh]
+==================
+After a cluster is provisioned, it may happen that DevWorkspaces are not in healthy state, and show as "Failed". This script will find them, fix them and start them.
+
+[ws-start-all.sh]
+=================
+This script starts all DevWorspaces that are not already in "Running" state.
+It runs first 'ws-fix-failed.sh' to ensure unhealthy workspaces are recovered.
+Then it starts also workspaces in 'Stopped' status.
