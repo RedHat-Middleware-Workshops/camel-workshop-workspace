@@ -97,7 +97,7 @@ for i in $(seq $FROM $TO); do
     oc whoami
     echo "checking connectivity to OpenShift"
     echo "All args: $@"
-    oc login --token $1 --server $2
+    oc login --token $1 --server $2 --insecure-skip-tls-verify
     oc whoami
     labundeploy
     echo "done with: $DEVWORKSPACE_NAMESPACE"
