@@ -8,7 +8,8 @@ echo "Running step 6 deployment"
 cd /projects/workshop/lab
 
 # Get user
-USER=$(oc whoami)
+# don't use 'oc whoami' so that admins can run this script
+USER=$(echo "$DEVWORKSPACE_NAMESPACE" | sed 's/-devspaces$//')
 
 info "Preparing configuration..."
 
