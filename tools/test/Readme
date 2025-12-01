@@ -1,8 +1,19 @@
 The following folder containes a set of helper scripts to run load tests.
 
+IMPORTANT
+=========
+There are 2 types of load tests:
+ 1) One type to validate the cluster is healthy and ready for students.
+    This type is clean and non-intrusive. It leaves no traces and workspaces are untouched.
+    This type of test is good to run for every environment provisioned, prior to the session.
 
-How to run the load test
-========================
+ 2) Another type to run a full blown user simulation
+    This type is dirty. It is intrusive, it simulates users executing Camel JBang to build and deploy flows. It uses workspaces and leaves traces.
+    This type of test is good to run after working on workshop updates and patches.
+
+
+How to run Type 1
+=================
 The load test should be run in the following order:
 
 1. build-test.sh
@@ -12,6 +23,16 @@ The load test should be run in the following order:
 5. stop-test.sh
 6. clean-test.sh
 
+
+How to run Type 2
+=================
+A test cluster needs to be provisioned.
+
+
+
+#################
+# Type 1 scripts
+#################
 
 [config.sh]
 ============
@@ -68,3 +89,18 @@ After a cluster is provisioned, it may happen that DevWorkspaces are not in heal
 This script starts all DevWorspaces that are not already in "Running" state.
 It runs first 'ws-fix-failed.sh' to ensure unhealthy workspaces are recovered.
 Then it starts also workspaces in 'Stopped' status.
+
+
+#################
+# Type 2 scripts
+#################
+
+[sim-users.sh]
+==============
+Simulates a user building and deploying flows from step 6 (Matrix <=> Kafka <=> RocketChat).
+You can simulate one user with "sim-user.sh N" (N the user number), or all users with "sim-users.sh all".
+Requires all workspaces to be up and running. You can use Type 1 [ws-start-all.sh] to ensure all workspaces are fixed and running before you initiate the simulation.
+
+[report.sh]
+===========
+Launch report for last simulation run. Also automatically executed with running [sim-users.sh].

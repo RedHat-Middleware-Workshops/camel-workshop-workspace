@@ -34,7 +34,7 @@ source /projects/workshop/tools/test/health.sh
 
 # echo "All args: $@"
 
-rm -r /tmp/workshop
+rm -rf /tmp/workshop
 mkdir -p /tmp/workshop/log
 
 TOKEN=$(oc whoami -t)
@@ -68,8 +68,7 @@ info "Found ${#RUNNING_DW[@]} running DevWorkspaces (others will be skipped)"
 # for i in $(seq "58" "60" ); do
 for i in $(seq $FROM $TO); do
 
-    echo "iteration $i"
-    # exit
+    echo "executing command on user$i"
 
     # Target namespace
     NAMESPACE=user$i-devspaces
@@ -83,7 +82,7 @@ for i in $(seq $FROM $TO); do
 
     POD=$(oc get pods -o name -n $NAMESPACE | grep workspace)
 
-    # oc exec -i -n user59-devspaces workspace75d57910cba8459b-59b6cdddb4-2vsjd -- \
+    # Execute command. Note 'bash' consumes arg0
     oc exec -i -n $NAMESPACE $POD -- \
     bash -c '
 
@@ -104,9 +103,9 @@ for i in $(seq $FROM $TO); do
     echo "SUCCESS"
     ' _ $TOKEN $SERVER \
     > /tmp/workshop/log/user$i.txt 2>&1 &
-#   ' _ "$@"        # ← "_" is the dummy $0, then your real args
+    # "_" is the dummy $0, then real args can be used.
 
-    echo "Now this is: $DEVWORKSPACE_NAMESPACE"
+    # echo "Now this is: $DEVWORKSPACE_NAMESPACE"
 done
 
 info "All jobs started – waiting for all background oc exec processes to finish..."
