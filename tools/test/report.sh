@@ -9,7 +9,7 @@ echo "FINAL REPORT – $(date)"
 echo "=================================================="
 
 # Counters
-declare -i total=0 running=0 success=0 skipped=0 error=0 pending=0
+declare -i total=0 running=0 success=0 fixed=0 skipped=0 error=0 pending=0
 
 # for logfile in "$LOGDIR"/user*.txt; do
 for logfile in $(ls "$LOGDIR"/user*.txt 2>/dev/null | sort -V); do
@@ -32,6 +32,10 @@ for logfile in $(ls "$LOGDIR"/user*.txt 2>/dev/null | sort -V); do
       echo -e "\033[32m$user → SUCCESS\033[0m"
       success+=1
       ;;
+    "FIXED")
+      echo -e "\033[32m$user → FIXED\033[0m"
+      fixed+=1
+      ;;
     "SKIPPED")
       echo -e "\033[34m$user → SKIPPED\033[0m"
       skipped+=1
@@ -52,6 +56,7 @@ echo "=================================================="
 echo "Summary:"
 echo "  Total users processed : $total"
 echo -e "  SUCCESS     : \033[32m$success\033[0m"
+echo -e "  FIXED       : \033[32m$fixed\033[0m"
 echo -e "  SKIPPED     : \033[34m$skipped\033[0m"
 echo -e "  ERROR       : \033[31m$error\033[0m"
 echo -e "  PENDING     : \033[33m$pending\033[0m"

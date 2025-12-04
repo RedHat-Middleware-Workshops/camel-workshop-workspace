@@ -90,17 +90,23 @@ for i in $(seq $FROM $TO); do
 
     echo "this is: $DEVWORKSPACE_NAMESPACE"
     source ~/.bashrc
-    camel version
-    step 6
-    cd /projects/workshop/lab
-    oc whoami
-    echo "checking connectivity to OpenShift"
-    echo "All args: $@"
-    oc login --token $1 --server $2 --insecure-skip-tls-verify
-    oc whoami
-    labdeploy
-    echo "done with: $DEVWORKSPACE_NAMESPACE"
-    echo "SUCCESS"
+    
+    echo "checking jbang..."
+    jbang version
+
+    echo "checking camel jbang..."
+    if ! command -v camel &> /dev/null; then
+        echo "camel command not found - installing Camel JBang..."
+        jbang trust add https://github.com/apache/camel/
+        jbang app install -Dcamel.jbang.version=4.16.0 camel@apache/camel
+        jbang camel@apache/camel plugin add kubernetes
+        camel version  # optional: show version again after install
+        echo "FIXED"
+    else
+        camel version
+        echo "SUCCESS"
+    fi
+
     ' _ $TOKEN $SERVER \
     > /tmp/workshop/log/user$i.txt 2>&1 &
     # "_" is the dummy $0, then real args can be used.
